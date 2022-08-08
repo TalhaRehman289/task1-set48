@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+      shrink-to-fit="no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <title>JavaScript HTML DOM</title>
+  </head>
+  <body>
+    <h2>JavaScript HTML DOM</h2>
+
+    <script>
+      function find_longest_word(str) {
+        // removing any special character
+        var array_of_words = str
+          .split(" ")
+          .map((word) => word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, ""));
+        var longest_word,
+          ignore_special_characters,
+          longest_word_length = 0,
+          number_of_vowels = 0,
+          get_vowels = 0;
+
+        for (var i = 0; i < array_of_words.length; i++) {
+          ignore_special_characters = array_of_words[i];
+          get_vowels = ignore_special_characters.match(/[aeiou]/gi);
+
+          if (
+            ignore_special_characters.length > longest_word_length &&
+            get_vowels.length > number_of_vowels
+          ) {
+            longest_word_length = array_of_words[i].length;
+            longest_word = array_of_words[i];
+            number_of_vowels = longest_word.match(/[aeiou]/gi).length;
+          }
+        }
+        console.log(longest_word);
+      }
+
+      var str =
+        "Smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers";
+
+      find_longest_word(str);
+    </script>
+  </body>
+</html>
+
